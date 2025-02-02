@@ -1,38 +1,91 @@
 .App {
-  text-align: center;
+	font-family: "Poppins", sans-serif;
+	background-color: #f0f4f8;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.game-container {
+	background-color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	justify-content: center;
+	max-width: 40%;
+	width: 100%;
+	padding: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.game-container header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.game-container header h2 {
+	font-size: 1.1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.scoreboard span {
+	font-weight: 800;
+	margin-right: 0.2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.line-divider {
+	width: 100%;
+	border-top: 1px solid #d1d5db;
+	margin: 0 0 20px 0;
+}
+
+.target-color-box {
+	width: 100%;
+	height: 50px;
+	background-color: red;
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.color-options-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.option-color-box {
+	min-width: 30%;
+	height: 5rem;
+	background-color: blue;
+}
+
+
+.restart-button {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	margin: 20px 0 10px 0;
+}
+
+.restart-button button {
+	background-color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.3);
+	font-weight: 800;
+	font-family: "Poppins", sans-serif;
+}
+
+
+@media (max-width: 768px) {
+	.game-container {
+		max-width: 85%;
+	}
+
+	.option-color-box {
+		width: 45%;
+	}
 }
