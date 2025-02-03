@@ -2,7 +2,7 @@ const Instructions = () => {
 	return (
 		<div className="instructions-container">
 			<p>
-				A color will appear above. Your goal is to guess the correct color from
+				Checkout the first rectangular color at the top of the page. Your goal is to guess the correct color from
 				the 6 options below it.
 			</p>
 			<ul>
