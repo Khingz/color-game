@@ -11,6 +11,7 @@ const ColorBox: React.FC<ColorBoxProps> = ({ color, onClick }) => {
 			className="option-color-box-button"
 			style={{ backgroundColor: color }}
             onClick={() => onClick(color)}
+			data-testid="colorOption"
 		></button>
 	);
 };

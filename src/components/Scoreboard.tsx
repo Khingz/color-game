@@ -5,7 +5,7 @@ interface ScoreboardProps {
 }
 
 const Scoreboard: React.FC<ScoreboardProps> = ({ score }) => (
-	<p className="scoreboard">
+	<p className="scoreboard" data-testid="score">
 		<span>Score:</span> {score}
 	</p>
 );

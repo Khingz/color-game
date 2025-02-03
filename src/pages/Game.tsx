@@ -69,7 +69,7 @@ const Game = () => {
 					<div className="restart-button-container">
 						<p onClick={() => (setShowInstructions(!showInstructions))}>How to play...</p>
 
-						<button onClick={handleRestart}>Restart Game</button>
+						<button onClick={handleRestart} data-testid="newGameButton">New Game</button>
 					</div>
 					{showInstructions && (<Instructions />)}
 				</>

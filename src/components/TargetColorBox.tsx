@@ -10,6 +10,7 @@ const TargetColorBox: React.FC<TargetColorProps> = ({ color, className }) => {
 		<div
 			className={`target-color-box ${className}`}
 			style={{ backgroundColor: color }}
+			data-testid="colorBox"
 		></div>
 	);
 };

@@ -1,6 +1,6 @@
 const CorrectAnswer = () => {
 	return (
-		<div className="checkmark-container">
+		<div className="checkmark-container" data-testid="gameStatus">
 			<svg
 				className="checkmark"
 				xmlns="http://www.w3.org/2000/svg"

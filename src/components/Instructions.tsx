@@ -1,9 +1,9 @@
 const Instructions = () => {
 	return (
-		<div className="instructions-container">
+		<div className="instructions-container" data-testid="gameInstructions">
 			<p>
-				Checkout the first rectangular color at the top of the page. Your goal is to guess the correct color from
-				the 6 options below it.
+				Checkout the first rectangular color at the top of the page. Your goal
+				is to guess the correct color from the 6 options below it.
 			</p>
 			<ul>
 				<li>Click the color you think matches the target.</li>
