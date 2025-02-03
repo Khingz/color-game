@@ -4,7 +4,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	min-height: 100vh;
 	color: #333;
 }
 
@@ -16,6 +16,7 @@
 	max-width: 40%;
 	width: 100%;
 	padding: 1rem;
+	transition: ease-in-out 0.3s;
 }
 
 .game-container header {
@@ -41,9 +42,9 @@
 
 .target-color-box {
 	width: 100%;
-	height: 50px;
+	height: 80px;
 	background-color: red;
-	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+	/* box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); */
 }
 
 .color-options-container {
@@ -52,23 +53,31 @@
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 1rem;
+	margin-top: 2rem;
 }
 
-.option-color-box {
+.option-color-box-button {
 	min-width: 30%;
 	height: 5rem;
 	background-color: blue;
+	border: none;
+	transition: all 0.3s;
+	cursor: pointer;
 }
 
-
-.restart-button {
+.restart-button-container {
 	display: flex;
-	justify-content: end;
+	justify-content: space-between;
 	align-items: center;
 	margin: 20px 0 10px 0;
 }
 
-.restart-button button {
+.restart-button-container p {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.restart-button-container button {
 	background-color: #fff;
 	border: none;
 	border-radius: 5px;
@@ -77,15 +86,213 @@
 	box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.3);
 	font-weight: 800;
 	font-family: "Poppins", sans-serif;
+	transition: all 0.3s;
 }
 
+.restart-button button:hover,
+.game-over button:hover,
+.option-color-box-button:hover {
+	transform: scale(1.05);
+}
+
+.game-over {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+.game-over button {
+	background-color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.3);
+	font-weight: 800;
+	font-family: "Poppins", sans-serif;
+	transition: all 0.3s;
+}
+
+/* CHECK MARK ANNIMATION BEGIN  */
+.checkmark-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.checkmark {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	display: block;
+	stroke-width: 2;
+	stroke: #fff;
+	stroke-miterlimit: 10;
+	margin: 10% auto;
+	box-shadow: inset 0px 0px 0px #7ac142;
+	animation: fill 0.4s ease-in-out 0.4s forwards,
+		scale 0.3s ease-in-out 0.9s both;
+}
+
+.checkmark__circle {
+	stroke-dasharray: 166;
+	stroke-dashoffset: 166;
+	stroke-width: 2;
+	stroke-miterlimit: 10;
+	stroke: #7ac142;
+	fill: none;
+	animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check {
+	transform-origin: 50% 50%;
+	stroke-dasharray: 48;
+	stroke-dashoffset: 48;
+	animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.correct-message {
+	margin-top: 20px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #7ac142;
+	animation: fadeIn 0.5s ease-in-out 1s forwards;
+	opacity: 0;
+}
+
+@keyframes stroke {
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes scale {
+	0%,
+	100% {
+		transform: none;
+	}
+	50% {
+		transform: scale3d(1.1, 1.1, 1);
+	}
+}
+
+@keyframes fill {
+	100% {
+		box-shadow: inset 0px 0px 0px 50px #7ac142;
+	}
+}
+
+@keyframes fadeIn {
+	100% {
+		opacity: 1;
+	}
+}
+/* CHECK MARK ANNIMATION END  */
+
+/* CHECK WRONG ANSWER ANNIMATION BEGIN  */
+.wrong-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.cross-icon {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	margin: 20px auto;
+	animation: shake 0.5s ease-in-out;
+}
+
+.cross-line {
+	position: absolute;
+	width: 100%;
+	height: 10px;
+	background-color: #ff4444;
+	border-radius: 5px;
+	top: 50%;
+	left: 0;
+	transform-origin: center;
+	animation: drawLine 0.5s ease-in-out forwards;
+}
+
+.cross-line-1 {
+	transform: translateY(-50%) rotate(45deg);
+}
+
+.cross-line-2 {
+	transform: translateY(-50%) rotate(-45deg);
+}
+
+.wrong-message {
+	margin-top: 20px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #ff4444;
+	animation: fadeInPop 0.5s ease-in-out 0.5s forwards;
+	opacity: 0;
+}
+
+@keyframes drawLine {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 100%;
+	}
+}
+
+@keyframes shake {
+	0% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-10px);
+	}
+	50% {
+		transform: translateX(10px);
+	}
+	75% {
+		transform: translateX(-10px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes fadeInPop {
+	0% {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* CHECK WRONG ANSWER ANNIMATION BEGIN  */
+
+/* MEDIA QUERY  */
 
 @media (max-width: 768px) {
 	.game-container {
 		max-width: 85%;
+		margin: 2rem 0;
 	}
 
-	.option-color-box {
+	.option-color-box-button {
 		width: 45%;
 	}
 }

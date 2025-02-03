@@ -1,0 +1,54 @@
+import React, { useState } from "react";
+import ColorGame from "../classes/ColorGame";
+import Scoreboard from "../components/Scoreboard";
+import ColorOptions from "../components/ColorOptions";
+
+const Game = () => {
+  const [game, setGame] = useState(new ColorGame());
+  const [gameOver, setGameOver] = useState(false);
+
+  const handleColorSelect = (color) => {
+    if (!game.checkAnswer(color)) {
+      setGameOver(true);
+    } else {
+      setGame(new ColorGame()); // Update game state to reflect new round
+    }
+  };
+
+  const handleRestart = () => {
+    const newGame = new ColorGame();
+    newGame.resetGame();
+    setGame(newGame);
+    setGameOver(false);
+  };
+
+  return (
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <h1>Guess the Color!</h1>
+      {gameOver ? (
+        <>
+          <h2>Game Over! Your score: {game.getScore()}</h2>
+          <button onClick={handleRestart} style={{ padding: "10px", fontSize: "16px" }}>
+            Play Again
+          </button>
+        </>
+      ) : (
+        <>
+          <div
+            style={{
+              backgroundColor: game.getTargetColor(),
+              width: "150px",
+              height: "150px",
+              margin: "20px auto",
+              border: "3px solid black",
+            }}
+          ></div>
+          <Scoreboard score={game.getScore()} />
+          <ColorOptions options={game.getOptions()} onColorSelect={handleColorSelect} />
+        </>
+      )}
+    </div>
+  );
+};
+
+export default Game;

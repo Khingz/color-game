@@ -1,15 +1,19 @@
 import ColorBox from "./ColorBox";
+import React from "react";
 
-const ColorOptions = () => {
-	const options = [1, 2, 3, 4, 5, 6];
+interface ColorOptionsProps {
+	options: string[];
+    onColorSelect: (color: string) => void;
+}
 
-    return (
-        <div className="color-options-container">
-            {options.map(option => (
-                <ColorBox />
-            ))}
-        </div>
-    )
+const ColorOptions: React.FC<ColorOptionsProps> = ({ options, onColorSelect }) => {
+	return (
+		<div className="color-options-container">
+			{options.map((option) => (
+				<ColorBox key={option} color={option} onClick={onColorSelect}/>
+			))}
+		</div>
+	);
 };
 
 export default ColorOptions;
